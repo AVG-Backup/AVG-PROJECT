@@ -10,8 +10,6 @@ resource "aws_vpc" "avg_vpc" {
   }
 }
 
-
-
 # Public Subnet 1 - us-east-1a
 resource "aws_subnet" "public_1" {
   vpc_id                  = aws_vpc.avg_vpc.id
@@ -137,9 +135,6 @@ resource "aws_nat_gateway" "nat_2" {
 }
 
 
-#                ROUTE TABLES                #
-##############################################
-
 # Public Route Table
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.avg_vpc.id
@@ -181,10 +176,7 @@ resource "aws_route_table" "private_rt_2" {
     Name = "avg-private-rt-2"
   }
 }
-
-##############################################
-#         ROUTE TABLE ASSOCIATIONS           #
-##############################################
+         
 
 # Associate public subnets to public route table
 resource "aws_route_table_association" "public_1_assoc" {
